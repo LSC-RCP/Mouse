@@ -8,203 +8,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            cursor: none;
-        }
-        body {
-            background: #000;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .font-playfair {
-            font-family: 'Playfair Display', serif;
-        }
-        .hero {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            background: #0a0a0a;
-        }
-        .bg-base {
-            position: absolute;
-            inset: 0;
-            background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260609_195923_b0ba8ace-1d1d-4f2c-9a28-1ab84b330680.png&w=1280&q=85');
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-        }
-        .bg-reveal {
-            position: absolute;
-            inset: 0;
-            background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260609_201152_bba90a12-bf12-459f-91f0-51f237dbaf3b.png&w=1280&q=85');
-            background-size: cover;
-            background-position: center;
-            z-index: 2;
-            mask-image: radial-gradient(circle at 0% 0%, transparent 0%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle at 0% 0%, transparent 0%, transparent 100%);
-        }
-        .content {
-            position: relative;
-            z-index: 10;
-            pointer-events: none;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 2rem 2.5rem;
-            color: white;
-        }
-        nav {
-            pointer-events: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding-top: 0.5rem;
-        }
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .nav-left svg {
-            fill: white;
-            width: 28px;
-            height: 28px;
-        }
-        .nav-left span {
-            font-size: 1.8rem;
-            font-style: italic;
-        }
-        .nav-center {
-            display: flex;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            padding: 6px 12px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .nav-center a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 6px 16px;
-            border-radius: 30px;
-            transition: 0.2s;
-        }
-        .nav-center a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-        .nav-center a.active {
-            color: white;
-        }
-        .nav-right {
-            pointer-events: auto;
-            background: white;
-            color: #111;
-            padding: 10px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: none;
-            transition: 0.2s;
-        }
-        .nav-right:hover {
-            background: #e0e0e0;
-        }
-        .headline {
-            text-align: center;
-            margin-top: 10vh;
-            pointer-events: none;
-        }
-        .headline h1 {
-            line-height: 0.95;
-            font-size: clamp(2.5rem, 10vw, 6rem);
-            font-weight: 400;
-            letter-spacing: -0.03em;
-        }
-        .headline .line1 {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            display: block;
-            letter-spacing: -0.05em;
-        }
-        .headline .line2 {
-            display: block;
-            letter-spacing: -0.08em;
-            margin-top: -0.1em;
-        }
-        .footer-text {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            pointer-events: none;
-            width: 100%;
-            padding-bottom: 0.5rem;
-        }
-        .footer-left {
-            max-width: 280px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-        }
-        .footer-right {
-            max-width: 280px;
-            text-align: right;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 16px;
-        }
-        .footer-right p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-        }
-        .btn-dig {
-            pointer-events: auto;
-            background: #e8702a;
-            border: none;
-            color: white;
-            padding: 12px 32px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: 0.2s;
-            box-shadow: 0 4px 15px rgba(232, 112, 42, 0.3);
-        }
-        .btn-dig:hover {
-            background: #d2611f;
-            transform: scale(1.03);
-        }
-        @media (max-width: 768px) {
-            .nav-center {
-                display: none;
-            }
-            .nav-right {
-                display: none;
-            }
-            .footer-text {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 30px;
-            }
-            .footer-right {
-                align-items: flex-start;
-                text-align: left;
-                width: 100%;
-            }
-            .footer-left {
-                max-width: 100%;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; cursor: none; }
+        body { background: #000; height: 100vh; overflow: hidden; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .hero { position: relative; width: 100vw; height: 100vh; background: #0a0a0a; }
+        .bg-base { position: absolute; inset: 0; background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260609_195923_b0ba8ace-1d1d-4f2c-9a28-1ab84b330680.png&w=1280&q=85'); background-size: cover; background-position: center; z-index: 1; }
+        .bg-reveal { position: absolute; inset: 0; background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260609_201152_bba90a12-bf12-459f-91f0-51f237dbaf3b.png&w=1280&q=85'); background-size: cover; background-position: center; z-index: 2; mask-image: radial-gradient(circle at 0% 0%, transparent 0%, transparent 100%); -webkit-mask-image: radial-gradient(circle at 0% 0%, transparent 0%, transparent 100%); }
+        .content { position: relative; z-index: 10; pointer-events: none; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem 2.5rem; color: white; }
+        nav { pointer-events: auto; display: flex; justify-content: space-between; align-items: center; width: 100%; padding-top: 0.5rem; }
+        .nav-left { display: flex; align-items: center; gap: 12px; }
+        .nav-left svg { fill: white; width: 28px; height: 28px; }
+        .nav-left span { font-size: 1.8rem; font-style: italic; }
+        .nav-center { display: flex; gap: 8px; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); padding: 6px 12px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.2); }
+        .nav-center a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 6px 16px; border-radius: 30px; transition: 0.2s; }
+        .nav-center a:hover { background: rgba(255,255,255,0.1); color: white; }
+        .nav-center a.active { color: white; }
+        .nav-right { pointer-events: auto; background: white; color: #111; padding: 10px 28px; border-radius: 40px; font-weight: 600; font-size: 0.9rem; border: none; transition: 0.2s; }
+        .nav-right:hover { background: #e0e0e0; }
+        .headline { text-align: center; margin-top: 10vh; pointer-events: none; }
+        .headline h1 { line-height: 0.95; font-size: clamp(2.5rem, 10vw, 6rem); font-weight: 400; letter-spacing: -0.03em; }
+        .headline .line1 { font-family: 'Playfair Display', serif; font-style: italic; display: block; letter-spacing: -0.05em; }
+        .headline .line2 { display: block; letter-spacing: -0.08em; margin-top: -0.1em; }
+        .footer-text { display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none; width: 100%; padding-bottom: 0.5rem; }
+        .footer-left { max-width: 280px; font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+        .footer-right { max-width: 280px; text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+        .footer-right p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+        .btn-dig { pointer-events: auto; background: #e8702a; border: none; color: white; padding: 12px 32px; border-radius: 40px; font-weight: 600; font-size: 0.95rem; transition: 0.2s; box-shadow: 0 4px 15px rgba(232,112,42,0.3); }
+        .btn-dig:hover { background: #d2611f; transform: scale(1.03); }
+        @media (max-width: 768px) { .nav-center { display: none; } .nav-right { display: none; } .footer-text { flex-direction: column; align-items: flex-start; gap: 30px; } .footer-right { align-items: flex-start; text-align: left; width: 100%; } .footer-left { max-width: 100%; } }
     </style>
 </head>
 <body>
@@ -214,9 +45,7 @@
         <div class="content">
             <nav>
                 <div class="nav-left">
-                    <svg viewBox="0 0 256 256">
-                        <path d="M 256 256 L 128 256 L 0 128 L 128 128 Z M 256 128 L 128 128 L 0 0 L 128 0 Z" />
-                    </svg>
+                    <svg viewBox="0 0 256 256"><path d="M 256 256 L 128 256 L 0 128 L 128 128 Z M 256 128 L 128 128 L 0 0 L 128 0 Z" /></svg>
                     <span class="font-playfair">Lithos</span>
                 </div>
                 <div class="nav-center">
@@ -249,15 +78,12 @@
     </div>
     <script>
         (function() {
-            const RADIUS = 260;
+            const RADIUS = 120;
             const revealEl = document.getElementById('bgReveal');
-            let currentX = -9999;
-            let currentY = -9999;
-            let targetX = -9999;
-            let targetY = -9999;
+            let currentX = -9999, currentY = -9999, targetX = -9999, targetY = -9999;
 
             function updateMask() {
-                const maskStyle = `radial-gradient(circle at ${currentX}px ${currentY}px, white 0%, white 40%, rgba(255,255,255,0.75) 60%, rgba(255,255,255,0.4) 75%, rgba(255,255,255,0.12) 88%, transparent 100%)`;
+                const maskStyle = `radial-gradient(circle at ${currentX}px ${currentY}px, white 0%, white 35%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.5) 65%, rgba(255,255,255,0.2) 80%, transparent 100%)`;
                 revealEl.style.maskImage = maskStyle;
                 revealEl.style.webkitMaskImage = maskStyle;
                 revealEl.style.maskSize = '100% 100%';
