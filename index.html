@@ -245,7 +245,7 @@
             </div>
         </div>
     </div>
-    <script>
+        <script>
         (function() {
             // ===== 控制光圈大小 =====
             const RADIUS = 500; // 改这个数值即可调整光圈大小
@@ -262,8 +262,7 @@
                     `radial-gradient(circle ${RADIUS}px at ${currentX}px ${currentY}px, white 0%, white 35%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.5) 65%, rgba(255,255,255,0.2) 80%, transparent 100%)`;
                 revealEl.style.maskImage = maskStyle;
                 revealEl.style.webkitMaskImage = maskStyle;
-                revealEl.style.maskSize = '100% 100%';
-                revealEl.style.webkitMaskSize = '100% 100%';
+                // 不设置 maskSize，让蒙版自然绘制
             }
 
             function smoothLoop() {
